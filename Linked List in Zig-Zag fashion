@@ -1,0 +1,40 @@
+class Node {
+    int data;
+    Node next;
+    Node(int d) {
+        data = d;
+        next = null;
+    }
+}
+
+*/
+
+class Solution{
+	public static Node zigZag(Node head){
+        //add code here.
+        boolean flag = true;
+        Node temp = head;
+        while(temp.next != null)
+        {
+            if(flag)
+            {
+                if(temp.data > temp.next.data)
+                {
+                    int t = temp.data;
+                    temp.data = temp.next.data;
+                    temp.next.data = t;
+                }
+            }
+                else{
+                    if(temp.data < temp.next.data)
+                  {   int t = temp.data;
+                    temp.data = temp.next.data;
+                    temp.next.data = t;
+                }
+                }
+            flag = !flag ;
+            temp = temp.next;
+        }
+        return head;
+    }
+}
