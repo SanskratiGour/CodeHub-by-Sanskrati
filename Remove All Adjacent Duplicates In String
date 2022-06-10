@@ -32,3 +32,35 @@ class Solution {
             
     }
 }
+
+
+
+
+Another Approach 
+
+class Solution {
+    public String removeDuplicates(String s) {
+       char[] stack = new char[s.length()];
+        int temp =0;
+        for(int i =0;i<s.length();i++)
+        {
+            char cur_char = s.charAt(i);
+            if( temp > 0 && stack[temp-1] == cur_char)
+            {
+                temp--;
+            }
+            else {
+                stack[temp] = cur_char;
+                temp++;
+            }
+            
+        }
+        return new String(stack,0,temp);
+    }
+}
+
+// iterate and check with current character 
+// if it is same then will decrement i 
+// if not then we will increment i 
+// i=1;
+// char[c ,a ,0 ,0 ,0, 0]
