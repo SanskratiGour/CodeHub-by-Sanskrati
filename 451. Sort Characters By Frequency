@@ -1,0 +1,28 @@
+class Solution {
+    public String frequencySort(String s) {
+
+        //create a hash map and count elements frequency 
+        Map<Character,Integer> map = new HashMap<>();
+        for(char c : s.toCharArray())
+        {
+            map.put(c , map.getOrDefault(c , 0)+1);
+        }
+        //create the max Heap and sort char by frequency 
+        PriorityQueue<Character> maxHeap = new PriorityQueue((a,b)-> map.get(b) - map.get(a));
+        maxHeap.addAll(map.keySet());
+
+        //String builder - result string
+        StringBuilder str = new StringBuilder();
+        while(!maxHeap.isEmpty())
+        {
+                char current =   maxHeap.poll();
+                int freq = map.get(current);
+                for(int i =0;i<freq;i++)
+                {
+                str.append(current);
+                }
+        }
+
+        return str.toString();
+    }
+}
