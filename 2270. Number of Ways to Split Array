@@ -1,0 +1,27 @@
+class Solution {
+    public int waysToSplitArray(int[] nums) {
+        long totalSum =0;
+        //calculating total sum of the whole array
+        for(int i :nums)
+        {
+            totalSum += i;
+        }
+
+        long prefixSum =0;
+        int validSum =0;
+
+        for(int i=0; i<nums.length-1; i++)
+        {
+            //updating prefix sum for lefr array 
+            prefixSum += nums[i];
+            //calculating right array by subtracting total - prefix
+            long rightSum = totalSum - prefixSum;
+
+            if(prefixSum >= rightSum)
+            {
+                validSum++; //Increment valid split count if condition is satisfied
+            }
+        }
+        return validSum;
+    }
+}
